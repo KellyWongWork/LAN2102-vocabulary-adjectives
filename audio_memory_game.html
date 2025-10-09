@@ -1,0 +1,104 @@
+Audio Memory Game - Restart Button Code
+The following HTML and JavaScript code includes a 'Restart' button that allows users to manually restart the current round in the Audio Memory Game.
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Audio Memory Game</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button { margin: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    #options button:hover { background-color: #f0f0f0; }
+    .correct { background-color: #c8e6c9; }
+    .incorrect { background-color: #ffcdd2; }
+  </style>
+</head>
+<body>
+  <h2>🎧 Audio Memory Challenge</h2>
+  <p>Listen and choose the correct adjective:</p>
+  <button onclick="playAudio()">🔊 Play Audio</button>
+  <button onclick="restartRound()">🔄 Restart</button>
+  <div id="options"></div>
+  <p id="feedback"></p>
+  <p>Score: <span id="score">0</span></p>
+
+  <script>
+    const words = [
+      { word: 'Additional', audio: 'https://dict.youdao.com/dictvoice?audio=Additional&type=2' },
+      { word: 'Affordable', audio: 'https://dict.youdao.com/dictvoice?audio=Affordable&type=2' },
+      { word: 'Appealing', audio: 'https://dict.youdao.com/dictvoice?audio=Appealing&type=2' },
+      { word: 'Boring', audio: 'https://dict.youdao.com/dictvoice?audio=Boring&type=2' },
+      { word: 'Creative', audio: 'https://dict.youdao.com/dictvoice?audio=Creative&type=2' },
+      { word: 'Durable', audio: 'https://dict.youdao.com/dictvoice?audio=Durable&type=2' }
+    ];
+
+    let currentWord = null;
+    let currentAudio = null;
+    let score = 0;
+    let attempts = 0;
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function startRound() {
+      attempts = 0;
+      const options = shuffle(words).slice(0, 5);
+      const answer = options[Math.floor(Math.random() * options.length)];
+      currentWord = answer.word;
+      currentAudio = answer.audio;
+
+      const optionsDiv = document.getElementById('options');
+      optionsDiv.innerHTML = '';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.textContent = opt.word;
+        btn.onclick = () => checkAnswer(opt.word, btn);
+        optionsDiv.appendChild(btn);
+      });
+
+      document.getElementById('feedback').textContent = '';
+    }
+
+    function playAudio() {
+      if (currentAudio) {
+        const audio = new Audio(currentAudio);
+        audio.play();
+      }
+    }
+
+    function checkAnswer(selected, button) {
+      if (selected === currentWord) {
+        button.classList.add('correct');
+        document.getElementById('feedback').textContent = '✅ Correct!';
+        score += 10;
+        document.getElementById('score').textContent = score;
+        setTimeout(startRound, 1000);
+      } else {
+        button.classList.add('incorrect');
+        attempts++;
+        if (attempts >= 2) {
+          document.getElementById('feedback').textContent = `❌ The correct answer was "${currentWord}".`;
+          const buttons = document.querySelectorAll('#options button');
+          buttons.forEach(btn => {
+            if (btn.textContent === currentWord) {
+              btn.classList.add('correct');
+            }
+          });
+          setTimeout(startRound, 5000);
+        } else {
+          document.getElementById('feedback').textContent = '❌ Try again.';
+        }
+      }
+    }
+
+    function restartRound() {
+      startRound();
+    }
+
+    // Initialize the first round
+    startRound();
+  </script>
+</body>
+</html>
