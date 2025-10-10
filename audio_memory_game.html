@@ -44,32 +44,30 @@
       margin-top: 10px;
       font-weight: bold;
     }
+    .nav-button {
+      text-align: center;
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
- 
   <div class="game-container">
     <h2>🎧 Audio Memory Challenge</h2>
     <p>Listen and choose the correct adjective:</p>
-
-<div style="border: 2px solid #007BFF; padding: 15px; margin-bottom: 20px; border-radius: 10px; text-align: center;">
-  <button onclick="playAudio()">🔊 Play Audio</button>
-  <button onclick="startRound()">🔄 Restart</button>
-</div>
-
-    
+    <button onclick="playAudio()">🔊 Play Audio</button>
+    <button onclick="startRound()">🔄 Restart</button>
     <div id="options"></div>
     <p id="feedback"></p>
     <p>Score: <span id="score">0</span></p>
   </div>
 
-   <div style="text-align: center; margin-top: 40px;">
-  <a href="index.html">
-    <button style="padding: 10px 20px; font-size: 16px; background-color: #2196F3; color: white; border: none; border-radius: 5px; cursor: pointer;">
-      ⬅️ Back to Home
-    </button>
-  </a>
-</div>
+  <div class="nav-button">
+    <a href="index.html">
+      <button style="padding: 10px 20px; font-size: 16px; background-color: #2196F3; color: red; border: none; border-radius: 5px; cursor: pointer;">
+        ⬅️ Back to Home
+      </button>
+    </a>
+  </div>
 
   <script>
     const words = [
@@ -127,7 +125,7 @@
         incorrectAttempts++;
         button.classList.add('disabled');
         button.disabled = true;
-        if (incorrectAttempts >= 3) {
+        if (incorrectAttempts >= 2) {
           document.getElementById('feedback').textContent = `❌ The correct answer was "${currentWord}".`;
           highlightCorrect();
           disableButtons();
