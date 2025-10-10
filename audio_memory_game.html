@@ -9,9 +9,6 @@
       padding: 20px;
       background: #f4f4f4;
     }
-    h2 {
-      color: #333;
-    }
     .game-container {
       background: #fff;
       padding: 60px;
@@ -25,11 +22,11 @@
       padding: 20px 40px;
       border: none;
       border-radius: 10px;
-      background-color: #1cadeb;
+      background-color: #16c4f0;
       color: white;
       cursor: pointer;
       transition: background-color 0.3s;
-      font-size: 32px
+      font-size: 32px;
     }
     button:hover {
       background-color: #73eaff;
@@ -45,53 +42,38 @@
       margin-top: 10px;
       font-weight: bold;
     }
+    .custom-button {
+      padding: 15px 30px;
+      font-size: 22px;
+      background-color: #f79605;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .custom-button:hover {
+      background-color: #ffb84d;
+      color: #ffffff;
+    }
   </style>
 </head>
 <body>
- 
   <div class="game-container">
     <h1>🎧 Audio Memory Challenge</h1>
     <h3>Listen and choose the correct adjective:</h3>
 
+    <div style="border: 3px solid #c7c5c1; padding: 15px; margin-bottom: 20px; border-radius: 10px; text-align: center; background-color: #fffaed;">
+      <button onclick="playAudio()" class="custom-button">🔊 Play Audio</button>
+      <button onclick="startRound()" class="custom-button">🔄 Restart</button>
+    </div>
 
-<style>
-  .custom-button {
-    padding: 15px 30px;
-    font-size: 22px;
-    background-color: #f79605;
-    color: #ffffff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  .custom-button:hover {
-    background-color: #ffb84d; /* lighter orange on hover */
-    color: #ffffff;            /* white text on hover */
-  }
-</style>
-
-<div style="border: 3px solid #c7c5c1; padding: 15px; margin-bottom: 20px; border-radius: 10px; text-align: center; background-color: #fffaed;">
-  <button onclick="playAudio()" class="custom-button">🔊 Play Audio</button>
-  <button onclick="startRound()" class="custom-button">🔄 Restart</button>
-</div>
-
-    
     <div id="options"></div>
     <p id="feedback"></p>
     <p>Score: <span id="score">0</span></p>
   </div>
 
-   <div style="text-align: center; margin-top: 40px;">
-  <a href="index.html">
-    <button style="padding: 20px 40px; font-size: 18px; background-color: #5c71db; color: white; border: none; border-radius: 5px; cursor: pointer;">
-      ⬅️ Back to Home
-    </button>
-  </a>
-</div>
-
-    <script>
+  <script>
     const words = [
       { word: 'Additional', audio: 'https://dict.youdao.com/dictvoice?audio=Additional&type=2' },
       { word: 'Affordable', audio: 'https://dict.youdao.com/dictvoice?audio=Affordable&type=2' },
@@ -99,13 +81,17 @@
       { word: 'Boring', audio: 'https://dict.youdao.com/dictvoice?audio=Boring&type=2' },
       { word: 'Convenient', audio: 'https://dict.youdao.com/dictvoice?audio=Convenient&type=2' },
       { word: 'Durable', audio: 'https://dict.youdao.com/dictvoice?audio=Durable&type=2' },
-      { word: 'Enjoyable', audio: 'https://dict.youdao.com/dictvoice?audio=Enjoyable&type=2 ' },
+      { word: 'Enjoyable', audio: 'https://dict.youdao.com/dictvoice?audio=Enjoyable&type=2' },
       { word: 'Flexible', audio: 'https://dict.youdao.com/dictvoice?audio=Flexible&type=2' },
       { word: 'Reliable', audio: 'https://dict.youdao.com/dictvoice?audio=Reliable&type=2' },
-      { word: 'Stylish', audio: 'https://dict.youdao.com/dictvoice?audio=Stylish&type=2' }
-      
+      { word: 'Stylish', audio: 'https://dict.youdao.com/dictvoice?audio=Stylish&type=2' },
+      { word: 'Inadequate', audio: 'https://dict.youdao.com/dictvoice?audio=Inadequate&type=2' },
+      { word: 'Special', audio: 'https://dict.youdao.com/dictvoice?audio=Special&type=2' },
+      { word: 'Costly', audio: 'https://dict.youdao.com/dictvoice?audio=Costly&type=2' },
+      { word: 'Difficult', audio: 'https://dict.youdao.com/dictvoice?audio=Difficult&type=2' },
+      { word: 'Practical', audio: 'https://dict.youdao.com/dictvoice?audio=Practical&type=2' },
+      { word: 'Uninteresting', audio: 'https://dict.youdao.com/dictvoice?audio=Uninteresting&type=2' }
     ];
-
 
     let currentWord = '';
     let currentAudio = '';
@@ -150,12 +136,12 @@
         button.classList.add('disabled');
         button.disabled = true;
         if (incorrectAttempts >= 3) {
-          document.getElementById('feedback').textContent = `❌ The correct answer was "${currentWord}".`; 
+          document.getElementById('feedback').textContent = `❌ The correct answer was "${currentWord}".`;
           highlightCorrect();
           disableButtons();
           setTimeout(startRound, 2000);
         } else {
-          document.getElementById('feedback').textContent = '❌ Try again.'; 
+          document.getElementById('feedback').textContent = '❌ Try again.';
         }
       }
     }
