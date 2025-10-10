@@ -52,9 +52,28 @@
     <h1>🎧 Audio Memory Challenge</h1>
     <h3>Listen and choose the correct adjective:</h3>
 
-<div style="border: 2px solid #007BFF; padding: 15px; margin-bottom: 20px; border-radius: 10px; text-align: center;   background-color: #ebfdff;">
-  <button onclick="playAudio()" style="padding: 20px 30px; font-size: 22px; background-color: #ffa319; color: #f5d79d;">🔊 Play Audio</button>
-  <button onclick="startRound()" style="padding: 20px 30px; font-size: 22px; background-color: #ffa319; color: #f5d79d;">🔄 Restart</button>
+
+<style>
+  .custom-button {
+    padding: 20px 30px;
+    font-size: 22px;
+    background-color: #ffa319;
+    color: #f5d79d;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .custom-button:hover {
+    background-color: #ffb84d; /* lighter orange on hover */
+    color: #ffffff;            /* white text on hover */
+  }
+</style>
+
+<div style="border: 2px solid #007BFF; padding: 15px; margin-bottom: 20px; border-radius: 10px; text-align: center; background-color: #ebfdff;">
+  <button onclick="playAudio()" class="custom-button">🔊 Play Audio</button>
+  <button onclick="startRound()" class="custom-button">🔄 Restart</button>
 </div>
 
     
