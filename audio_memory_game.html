@@ -123,11 +123,11 @@
         incorrectAttempts++;
         button.classList.add('disabled');
         button.disabled = true;
-        if (incorrectAttempts >= 2) {
+        if (incorrectAttempts >= 3) {
           document.getElementById('feedback').textContent = `❌ The correct answer was "${currentWord}".`;
           highlightCorrect();
           disableButtons();
-          setTimeout(startRound, 5000);
+          setTimeout(startRound, 2000);
         } else {
           document.getElementById('feedback').textContent = '❌ Try again.';
         }
