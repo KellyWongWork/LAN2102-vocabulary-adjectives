@@ -140,7 +140,7 @@
         button.classList.add('correct');
         score += 10;
         document.getElementById('score').textContent = score;
-        document.getElementById('feedback').textContent = '✅ Correct!';
+        document.getElementById('feedback').textContent = '✅ Correct!'; font-size: 22px;
         disableButtons();
         setTimeout(startRound, 1500);
       } else {
@@ -148,12 +148,12 @@
         button.classList.add('disabled');
         button.disabled = true;
         if (incorrectAttempts >= 3) {
-          document.getElementById('feedback').textContent = `❌ The correct answer was "${currentWord}".`;
+          document.getElementById('feedback').textContent = `❌ The correct answer was "${currentWord}".`; font-size: 22px;
           highlightCorrect();
           disableButtons();
           setTimeout(startRound, 2000);
         } else {
-          document.getElementById('feedback').textContent = '❌ Try again.';
+          document.getElementById('feedback').textContent = '❌ Try again.'; font-size: 22px; 
         }
       }
     }
