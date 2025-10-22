@@ -166,7 +166,7 @@
       optionsDiv.innerHTML = '';
 
       const shuffled = words.sort(() => 0.5 - Math.random());
-      const options = shuffled.slice(0, 5);
+      const options = shuffled.slice(0, 4);
       const answer = options[Math.floor(Math.random() * options.length)];
       currentWord = answer.word;
       currentAudio = answer.audio;
