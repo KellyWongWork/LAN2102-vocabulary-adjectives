@@ -40,9 +40,10 @@
     <h2 id="word">Loading...</h2>
     <button class="play-btn" onclick="playAudio()">🔊 Hear Word</button>
     <button class="speak-btn" onclick="startRecognition()">🎙️ Say the Word</button>
-        <p id="feedback"></p>
+     <p id="feedback"></p>
     <p id="score">Score: 0</p>
   </div>
+
 <div style="text-align: center; margin-top: 20px;">
   <a href="index.html">
     <button style="padding: 10px 20px; font-size: 14px; background-color: #5c71db; color: white; border: none; border-radius: 5px; cursor: pointer;">
@@ -115,7 +116,15 @@
       };
     }
 
-
+    function nextWord() {
+      currentIndex++;
+      if (currentIndex < words.length) {
+        showWord();
+      } else {
+        wordDisplay.textContent = "🎉 Well done!";
+        feedback.textContent = "You've completed all the words.";
+        nextBtn.style.display = "none";
+      }
     }
 words.sort(() => 0.5 - Math.random());
     showWord();
