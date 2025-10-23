@@ -43,7 +43,6 @@
         <p id="feedback"></p>
     <p id="score">Score: 0</p>
   </div>
- <button onclick="restartGame()" style="background-color: #e91e63; color: white;">🔄 Restart</button>
 <div style="text-align: center; margin-top: 20px;">
   <a href="index.html">
     <button style="padding: 10px 20px; font-size: 14px; background-color: #5c71db; color: white; border: none; border-radius: 5px; cursor: pointer;">
@@ -116,13 +115,6 @@
       };
     }
 
-    
-function restartGame() {
-  currentIndex = 0;
-  score = 0;
-  scoreDisplay.textContent = "Score: 0";
-  showWord();
-}
 
     }
 words.sort(() => 0.5 - Math.random());
