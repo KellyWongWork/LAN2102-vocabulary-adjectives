@@ -41,7 +41,7 @@
     <h2 id="word">Loading...</h2>
     <button class="play-btn" onclick="playAudio()">🔊 Listen </button>
     <button class="speak-btn" onclick="startRecognition()">🎙️ Say it</button>
-<button class="next-btn" onclick="nextWord()" id="nextBtn" style="display:inline-block;">➡️ Next</button>
+<button class="next-btn" onclick="nextWord()" id="nextBtn" style="background-color: #d490b3; color: white; display: block; margin-top: 10px;">➡️ Next</button>
     <p id="feedback"></p>
     <p id="score">Score: 0</p>
   </div>
@@ -82,8 +82,7 @@
       currentWord = words[currentIndex];
       wordDisplay.textContent = currentWord.word;
       feedback.textContent = "";
-      nextBtn.style.display = "none";
-    }
+      }
 
     function playAudio() {
       const audio = new Audio(currentWord.audio);
