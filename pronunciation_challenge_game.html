@@ -40,6 +40,7 @@
     <h2 id="word">Loading...</h2>
     <button class="play-btn" onclick="playAudio()">🔊 Hear Word</button>
     <button class="speak-btn" onclick="startRecognition()">🎙️ Say the Word</button>
+    <button onclick="restartGame()" style="background-color: #e91e63; color: white;">🔄 Restart</button>
      <p id="feedback"></p>
     <p id="score">Score: 0</p>
   </div>
@@ -116,15 +117,14 @@
       };
     }
 
-    function nextWord() {
-      currentIndex++;
-      if (currentIndex < words.length) {
-        showWord();
-      } else {
-        wordDisplay.textContent = "🎉 Well done!";
-        feedback.textContent = "You've completed all the words.";
-        nextBtn.style.display = "none";
-      }
+    
+function restartGame() {
+  currentIndex = 0;
+  score = 0;
+  scoreDisplay.textContent = "Score: 0";
+  showWord();
+}
+
     }
 words.sort(() => 0.5 - Math.random());
     showWord();
