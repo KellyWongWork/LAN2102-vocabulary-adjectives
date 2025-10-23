@@ -22,17 +22,17 @@ pronounciation_game
       margin-top: 20px;
     }
     button {
-      padding: 10px 20px;
-      font-size: 18px;
+      padding: 8px 20px;
+      font-size: 16px;
       margin: 10px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
     }
-    .play-btn { background-color: #2196F3; color: white; }
+    .play-btn { background-color: #f79605; color: white; }
     .speak-btn { background-color: #4CAF50; color: white; }
-    .next-btn { background-color: #f79605; color: white; display: none; }
-    #feedback { font-size: 20px; margin-top: 20px; }
+    .next-btn { background-color: #98c43f; color: white; display: none; }
+    #feedback { font-size: 30px; margin-top: 20px; }
     #score { font-size: 18px; margin-top: 10px; color: #333; }
   </style>
 </head>
@@ -41,8 +41,8 @@ pronounciation_game
   <h1>🎤 Pronunciation Challenge</h1>
   <div class="card">
     <h2 id="word">Loading...</h2>
-    <button class="play-btn" onclick="playAudio()">🔊 Hear Word</button>
-    <button class="speak-btn" onclick="startRecognition()">🎙️ Say the Word</button>
+    <button class="play-btn" onclick="playAudio()">🔊 Listen </button>
+    <button class="speak-btn" onclick="startRecognition()">🎙️ Say it</button>
 <button class="next-btn" onclick="nextWord()" id="nextBtn" style="display:inline-block;">➡️ Next</button>
     <p id="feedback"></p>
     <p id="score">Score: 0</p>
